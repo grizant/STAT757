@@ -1,0 +1,172 @@
+%A simple LaTeX syllabus template by Luke Smith.
+%I believe this is a variation of a template I got by Mike Hammond...?
+
+%\documentclass[11pt,twocolumn]{article}
+\documentclass[11pt,onecolumn]{article}
+\usepackage{hyperref,color}
+\usepackage[margin=.5in]{geometry}
+\usepackage{titlesec}
+\usepackage{longtable}
+\usepackage{gb4e}
+%\usepackage[margin=.75in]{geometry}
+\usepackage{textcomp}
+\pagenumbering{gobble}
+
+%paragraph formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\titlespacing\subsection{0in}{\parskip}{\parskip}
+\titlespacing\section{0in}{\parskip}{\parskip}
+
+%Just fill these in to fill in the basic syllabus information.
+\newcommand{\coursename}{Applied Regression Analysis - STAT 757}
+\newcommand{\semester}{Spring 2018}
+\newcommand{\roomnumb}{DMSC 106}
+\newcommand{\classtimes}{TuTh 9:00AM - 10:15AM}
+\newcommand{\myname}{A.~Grant Schissler}
+% \newcommand{\myemail}{\href{mailto:aschissler@unr.edu}{aschissler@unr.edu}}
+\newcommand{\myemail}{aschissler@unr.edu}
+\newcommand{\office}{DMSC 224}
+\newcommand{\officehours}{TBD, or by appointment}
+% \newcommand{\university}{The University of Nevada, Reno}
+
+\title{\textbf{\coursename}}
+% \author{{\university}---{\semester}---{\roomnumb}---{\classtimes}}
+\author{{\semester}---{\roomnumb}---{\classtimes}}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+
+\section{Instructor information}
+
+\begin{tabular}{llll}
+\textbf{Name}:&\myname & \textbf{Contact}:&\href{mailto:\myemail}{\myemail}, 775-784-4661 (office)\\
+\textbf{Office}:&\office & \textbf{Hours}:&\officehours\\
+\end{tabular}
+
+\section{Required text}
+\emph{A Modern Approach to Regression with R}, by S.J.~Sheather. \\
+Textbook website:~\url{http://www.stat.tamu.edu/~sheather/book/}
+
+
+\section{Course website}
+Course website:~\url{http://www.grantschissler.com/teaching/SP18/STAT757} \\
+Course github repo:~\url{https://github.com/grizant/STAT757}
+\section{Course description}
+This course covers techniques and applications of regression analysis, including inference and model diagnostics.
+
+\section{Course Pre-requisites}
+None. Background in probability, statistics, and computing would be beneficial.
+
+\section{Grading}
+
+\begin{center}
+\begin{tabular}{cc}
+\begin{tabular}{l|l}	%For grade items (quizzes, homework, etc.)
+Item&Percent\\\hline\hline
+<++>&<++>\%\\
+\end{tabular}
+&
+\begin{tabular}{ll}
+A&90-100\\
+B&80-89\\
+C&70-79\\
+D&60-69\\
+E&59 or below
+\end{tabular}
+\end{tabular}
+\end{center}
+
+\section{Student Learning Outcomes}
+\begin{enumerate}
+\item Students will be able to demonstrate understanding of the concepts that underly modern methods of linear regression, and critically assess the assumption associated with different statistical models.
+\item Students will be able to interpret and discuss the results of regression analyses in a broader scientific context and using the terminology of the applied problem.
+\item Students will be able to perform essential regression analysis using a professional statistical package, write technical report, and present the results to a professional audience.
+\end{enumerate}
+\section{Tentative schedule}
+
+\begin{tabular}{r|r|p{5in}}
+Week&Date&Topic\\\hline\hline
+  1 & Tue, Jan 23 & \\
+  \hline
+    & Thu, Jan 25 & \\
+  \hline
+  2 & Tue, Jan 30 & \\
+  \hline
+    & Thu, Feb 1 & \\
+    \hline
+  3 & Tue, Feb 6 & \\
+  \hline
+    & Thu, Feb 8 & \\
+      \hline
+  4 & Tue, Feb 13 & \\
+    \hline
+    & Thu, Feb 15 & \\
+        \hline
+  5 & Tue, Feb 20 & \\
+    \hline
+    & Thu, Feb 22 & \\
+        \hline
+  6 & Tue, Feb 27 & \\
+    \hline
+    & Thu, Mar 1 & \\
+        \hline
+  7 & Tue, Mar 6 & \\
+    \hline
+    & Thu, Mar 8 & \\
+        \hline
+  8 & Tue, Mar 13 & \\
+    \hline
+    & Thu, Mar 15 & \\
+          \hline
+  9 & Tue, Mar 20 & Spring break (no classes; campus closed)\\
+    \hline
+    & Thu, Mar 22 & Spring break (no classes; campus closed)\\
+        \hline
+  10 & Tue, Mar 27 & \\
+    \hline
+    & Thu, Mar 29 & \\
+        \hline
+  11 & Tue, Apr 3 & (last day for a W)\\
+    \hline
+    & Thu, Apr 5 & \\
+        \hline
+  12 & Tue, Apr 10 & \\
+    \hline
+    & Thu, Apr 12 & \\
+        \hline
+  13 & Tue, Apr 17 & \\
+    \hline
+    & Thu, Apr 19 & \\
+        \hline
+  14 & Tue, Apr 24 & \\
+    \hline
+    & Thu, Apr 26 & \\
+        \hline
+  15 & Tue, May 1 & \\
+    \hline
+    & Thu, May 3 & \\
+        \hline
+  16 & Tue, May 8 & \\
+    \hline
+    & Thu, May 10 & Finals begin (no class)\\
+        \hline
+  17 & Tue, May 15 & \textbf{Final project presentations 7:30am to 9:30am}\\
+    \hline
+
+\end{tabular}
+
+
+
+\end{document}

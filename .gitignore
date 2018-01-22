@@ -36,6 +36,9 @@ vignettes/*.pdf
 *.aux
 *.log
 *.toc
+*.fls
+auto/
+
 
 # PDF output - usually a bad idea to keep this in Git
 *.pdf

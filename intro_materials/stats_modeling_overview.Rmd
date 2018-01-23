@@ -1,0 +1,76 @@
+---
+title: "Stats Modeling Overview"
+author: "AG Schissler"
+date: "1/22/2018"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Statistical modeling workflow
+
+![Modeling workflow](stats_modeling_workflow.pdf)
+
+## Quick example: Vapor pressure of mercury as a function of temperature
+
+```{r pressure, echo=TRUE}
+## 'pressure data set' is automatically loaded in 
+## workspace through package{datasets}
+head(pressure)
+```
+
+## Data set structure
+
+```{r pres_str, echo = TRUE}
+str(pressure)
+```
+
+## Numeric summary of pressure and temperature
+
+```{r pres_sum, echo = TRUE}
+summary(pressure)
+```
+
+## Visualization pressure and temperature relationalship
+
+```{r pres_plot, echo = TRUE}
+plot(pressure)
+```
+
+## Maybe pressure increases linearly with temperature?
+
+- If that's true then a model could be: 
+- pressure = b0 + b1*temperature
+- Let's generate fake data and fit a linear model (simple linear regression!)
+
+## Generate fake data from pressure = b0 + b1*temperature
+```{r pres_fake, echo = TRUE,fig.height=4}
+## pick values b0 and b1
+b0 <- 0
+b1 <- 10
+## store in dataset as a new variable
+fake_temp <- b0 + b1*pressure$temperature
+plot(pressure$temperature, fake_temp)
+```
+
+## Fit a simple linear regression model
+```{r pres_fake_lm, echo = TRUE}
+fake_lm <- lm(formula = fake_temp ~ pressure$temperature)
+summary(fake_lm)
+```
+
+## Hmm, model seems too perfect, add noise??
+```{r pres_fake2, echo = TRUE,fig.height=4}
+set.seed(44)
+error <- rnorm(n = nrow(pressure), mean = 0, sd = 100)
+fake_temp <- b0 + b1*pressure$temperature + error
+plot(x = pressure$temperature, y = fake_temp)
+```
+
+## Fit a simple linear regression model with noise in data
+```{r pres_fake_lm2, echo = TRUE}
+fake_lm <- lm(formula = fake_temp ~ pressure$temperature)
+summary(fake_lm)
+```

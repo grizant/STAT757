@@ -1,7 +1,7 @@
 ---
 title: "Stats Modeling Overview"
 author: "AG Schissler"
-date: "1/22/2018"
+date: "1/25/2018"
 output: beamer_presentation
 ---
 
@@ -13,64 +13,99 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![Modeling workflow](stats_modeling_workflow.pdf)
 
-## Quick example: Vapor pressure of mercury as a function of temperature
+## Quick example: Stopping distance for speeding cars
 
-```{r pressure, echo=TRUE}
+```{r cars, echo=TRUE}
 ## 'pressure data set' is automatically loaded in 
 ## workspace through package{datasets}
-head(pressure)
+head(cars)
 ```
 
 ## Data set structure
 
-```{r pres_str, echo = TRUE}
-str(pressure)
+```{r cars_str, echo = TRUE}
+str(cars)
 ```
 
 ## Numeric summary of pressure and temperature
 
-```{r pres_sum, echo = TRUE}
-summary(pressure)
+```{r cars_sum, echo = TRUE}
+summary(cars)
 ```
 
-## Visualization pressure and temperature relationalship
+## Visualization of speed and dist relationship
 
-```{r pres_plot, echo = TRUE}
-plot(pressure)
+```{r cars_plot, echo = TRUE}
+plot(cars)
 ```
 
-## Maybe pressure increases linearly with temperature?
+## Maybe stopping distance increases linearly with speed?
 
 - If that's true then a model could be: 
-- pressure = b0 + b1*temperature
+- dist = b0 + b1*speed
 - Let's generate fake data and fit a linear model (simple linear regression!)
 
 ## Generate fake data from pressure = b0 + b1*temperature
-```{r pres_fake, echo = TRUE,fig.height=4}
+```{r cars_fake, echo = TRUE,fig.height=4}
 ## pick values b0 and b1
 b0 <- 0
-b1 <- 10
+b1 <- 5
 ## store in dataset as a new variable
-fake_temp <- b0 + b1*pressure$temperature
-plot(pressure$temperature, fake_temp)
+cars$fake_dist <- b0 + b1*cars$speed
+plot(x = cars$speed, y = cars$fake_dist)
 ```
 
 ## Fit a simple linear regression model
-```{r pres_fake_lm, echo = TRUE}
-fake_lm <- lm(formula = fake_temp ~ pressure$temperature)
+```{r cars_fake_lm, echo = TRUE}
+fake_lm <- lm(formula = fake_dist ~ speed, data = cars)
 summary(fake_lm)
 ```
 
-## Hmm, model seems too perfect, add noise??
-```{r pres_fake2, echo = TRUE,fig.height=4}
-set.seed(44)
-error <- rnorm(n = nrow(pressure), mean = 0, sd = 100)
-fake_temp <- b0 + b1*pressure$temperature + error
-plot(x = pressure$temperature, y = fake_temp)
+## Hmm, data seem too perfect, add noise??
+```{r cars_fake2, echo = TRUE,fig.height=4}
+set.seed(440)
+error <- rnorm(n = nrow(cars), mean = 0, sd = 10)
+cars$fake_dist <- b0 + b1*cars$speed + error
+par(mfrow=c(1,2))
+hist(error, breaks = 12)
+plot(x = cars$speed, y = cars$fake_dist)
 ```
 
 ## Fit a simple linear regression model with noise in data
 ```{r pres_fake_lm2, echo = TRUE}
-fake_lm <- lm(formula = fake_temp ~ pressure$temperature)
+fake_lm <- lm(formula = fake_dist ~ speed, data = cars)
+## attributes(fake_lm)
 summary(fake_lm)
+sd(fake_lm$residuals) ## naive estimate of error variance
+```
+
+## Plot the regression line
+```{r cars_fake2_plot, echo = TRUE, fig.height=4}
+plot(x = cars$speed, y = cars$fake_dist)
+abline(fake_lm)
+```
+
+## Plot some diagnostics
+```{r cars_fake2_resid_plot, echo = TRUE, fig.height=4}
+par(mfrow=c(1,2))
+plot(fake_lm)
+```
+
+## Fit model on real data
+```{r cars_real, echo = TRUE}
+real_lm <- lm(formula = dist ~ speed, data = cars)
+summary(real_lm)
+```
+
+## Plot the regression line
+```{r cars_real_plot, echo = TRUE, fig.height=4}
+par(mfrow=c(1,1))
+plot(x = cars$speed, y = cars$dist)
+abline(real_lm)
+```
+
+## Plot some diagnostics
+```{r cars_real_resid_plot, echo = TRUE, fig.height=4}
+par(mfrow=c(1,2))
+plot(real_lm)
 ```

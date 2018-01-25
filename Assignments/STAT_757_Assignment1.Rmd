@@ -4,6 +4,7 @@ subtitle: "DUE 2/4/2018 11:59PM"
 author: "AG Schissler, modified from P. Hurtado"
 date: "1/24/2018"
 output: pdf_document
+exclude: true
 ---
 
 ## i. DataCamp: Introduction to R [30 points]

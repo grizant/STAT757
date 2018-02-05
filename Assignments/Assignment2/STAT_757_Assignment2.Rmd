@@ -1,0 +1,49 @@
+---
+title: "STAT 757 Assignment 2"
+subtitle: "DUE 2/18/2018 11:59PM"
+author: "AG Schissler"
+date: "2/1/2018"
+output: pdf_document
+exclude: true
+references:
+- id: sheather2009
+  title: A modern approach to regression with R
+  author:
+  - family: Sheather
+    given: Simon
+  publisher: Springer Science \& Business Media
+  type: book
+  issued:
+    year: 2009
+---
+
+## Instructions [30 points]
+
+Modify this file to provide responses to the Ch.2 Exercises (Section 2.8 in @sheather2009). You can find some helpful code here: [http://www.stat.
+tamu.edu/~sheather/book/docs/rcode/Chapter2.R](http://www.stat.tamu.edu/~sheather/book/docs/rcode/Chapter2.R). 
+
+## Exercise 2.8.1 [10 points]
+
+```{exercise1}
+## change the line below to your path!
+playbill <- read.csv("~/OneDrive - University of Nevada, Reno/Teaching/STAT_757/Sheather_data/playbill.csv",header=TRUE) 
+
+#Figure 2.6 on page 38
+par(mfrow=c(1,1))
+plot(playbill$LastWeek,playbill$CurrentWeek,xlab="Gross box office results previous week",
+ylab="Gross box office results current week")
+```
+
+## Exercise 2.8.2 [10 points]
+
+## Exercise 2.8.3 [10 points]
+
+## Exercise 2.8.4 [10 points]
+
+## Exercise 2.8.5 [10 points]
+
+## Exercise 2.8.6 [10 points]
+
+## Exercise 2.8.7 [10 points]
+
+## References

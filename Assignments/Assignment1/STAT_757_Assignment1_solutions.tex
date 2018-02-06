@@ -1,0 +1,510 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={STAT 757 - Assignment 1},
+            pdfauthor={Jane Doe},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{STAT 757 - Assignment 1}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Jane Doe}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{February 2, 2018}
+
+
+\begin{document}
+\maketitle
+
+\hypertarget{i.-datacamp-introduction-to-r-30-points}{%
+\subsection{i. DataCamp: Introduction to R {[}30
+points{]}}\label{i.-datacamp-introduction-to-r-30-points}}
+
+Please complete the course an Introduction to R. You should have
+received an email with an invitation link. Please email me if you did
+not. If you already know R, please talk to me in class and follow up
+with an email to opt out.
+
+Completed. Records are in DataCamp.
+
+\hypertarget{ii.-instructions-for-the-rest-of-this-assignment}{%
+\subsection{ii. Instructions for the rest of this
+assignment}\label{ii.-instructions-for-the-rest-of-this-assignment}}
+
+The purpose of this portion of the assignment is to get a little
+experience making R Markdown documents as a way of nicely formatting
+output from R code while exploring the datasets from Sheather Ch.1 and
+learning to generate realizations of random variables (aka ``fake
+data''). Modify this RMarkdown file (STAT\_757\_Assignment1.Rmd) and
+compile your document as a PDF (or Word document if you're having LaTeX
+issuse) and naming it according to the format
+SURNAME-FIRSTNAME-Assignment1.pdf, and emailing that PDF to the
+instructor by the due date listed above.
+
+\hypertarget{reproduce-the-plots-from-sheather-ch.1-40-points}{%
+\subsection{2. Reproduce the plots from Sheather Ch.1 {[}40
+points{]}}\label{reproduce-the-plots-from-sheather-ch.1-40-points}}
+
+Modify this file so that it reproduces all the output from the R script
+located at
+\href{http://www.stat.\%20tamu.edu/~sheather/book/docs/rcode/Chapter1.R}{http://www.stat.
+tamu.edu/\textasciitilde{}sheather/book/docs/rcode/Chapter1.R}. I've
+done the plots for the first dataset for you below. Remember that you
+will need to download each of the four data sets from
+\url{http://www.stat.tamu.edu/~sheather/book/data_sets.php}, and set
+your working directory (under the ``Session'' menu in Rstudio)
+appropriately. (And yes, this really is as easy as copying the blocks of
+R code for each dataset into this document into the appropriate places!)
+Need help? First, see \url{http://rmarkdown.rstudio.com}. Especially the
+resources under Learning More
+(\url{http://rmarkdown.rstudio.com/\#learning-more}).
+
+Below are the plots that appear in Chapter 1 of the textbook. They were
+created from the R script
+\url{http://www.stat.tamu.edu/~sheather/book/docs/rcode/Chapter1.R} and
+the data files at
+\url{http://www.stat.tamu.edu/~sheather/book/data_sets.php}.
+
+\hypertarget{assessing-the-ability-of-nfl-kickers}{%
+\subsubsection{Assessing the ability of NFL
+Kickers}\label{assessing-the-ability-of-nfl-kickers}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{kicker <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/OneDrive - University of Nevada, Reno/Teaching/STAT_757/Sheather_data/Data/FieldGoals2003to2006.csv"}\NormalTok{,}\DataTypeTok{header=}\NormalTok{T) ## adjust this as needed.}
+\NormalTok{## Sorry this line is too long, the data are labeled 'FieldGoals2003to2006.csv'}
+
+\KeywordTok{attach}\NormalTok{(kicker) ## THIS IS NOT USUALLY RECOMMENDED, ASK ME IN CLASS WHY NOT.}
+
+\CommentTok{#Figure 1.1 on page 2}
+\KeywordTok{plot}\NormalTok{(kicker}\OperatorTok{$}\NormalTok{FGtM1,kicker}\OperatorTok{$}\NormalTok{FGt,}
+\DataTypeTok{main=}\StringTok{"Unadjusted Correlation = -0.139"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"Field Goal Percentage in Year t-1"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"Field Goal Percentage in Year t"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#p-values on page 3}
+\NormalTok{fit}\FloatTok{.1}\NormalTok{ <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(FGt}\OperatorTok{~}\NormalTok{FGtM1 }\OperatorTok{+}\NormalTok{Name }\OperatorTok{+}\NormalTok{FGtM1}\OperatorTok{:}\NormalTok{Name,}\DataTypeTok{data=}\NormalTok{kicker)}
+\KeywordTok{anova}\NormalTok{(fit}\FloatTok{.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: FGt
+##            Df Sum Sq Mean Sq F value Pr(>F)
+## FGtM1       1     87    87.2    1.90 0.1760
+## Name       18   2252   125.1    2.73 0.0046
+## FGtM1:Name 18    418    23.2    0.51 0.9386
+## Residuals  38   1743    45.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#slope and interecepts of lines in Figure 1.2 on page 3}
+\NormalTok{fit}\FloatTok{.2}\NormalTok{ <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(FGt }\OperatorTok{~}\StringTok{ }\NormalTok{Name }\OperatorTok{+}\StringTok{ }\NormalTok{FGtM1,}\DataTypeTok{data=}\NormalTok{kicker)}
+\NormalTok{fit}\FloatTok{.2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = FGt ~ Name + FGtM1, data = kicker)
+## 
+## Coefficients:
+##              (Intercept)           NameDavid Akers  
+##                  126.687                    -4.646  
+##           NameJason Elam          NameJason Hanson  
+##                   -3.017                     2.117  
+##            NameJay Feely             NameJeff Reed  
+##                  -10.374                    -8.296  
+##         NameJeff Wilkins           NameJohn Carney  
+##                    2.310                    -5.977  
+##            NameJohn Hall            NameKris Brown  
+##                   -8.486                   -13.360  
+##          NameMatt Stover       NameMike Vanderjagt  
+##                    8.736                     4.896  
+##         NameNeil Rackers           NameOlindo Mare  
+##                   -6.620                   -13.036  
+##          NamePhil Dawson          NameRian Lindell  
+##                    3.552                    -4.867  
+##        NameRyan Longwell  NameSebastian Janikowski  
+##                   -2.231                    -3.976  
+##        NameShayne Graham                     FGtM1  
+##                    2.135                    -0.504
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Figure 1.2 on page 3}
+\KeywordTok{plot}\NormalTok{(kicker}\OperatorTok{$}\NormalTok{FGtM1,kicker}\OperatorTok{$}\NormalTok{FGt,}
+\DataTypeTok{main=}\StringTok{"Slope of each line = -0.504"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"Field Goal Percentage in Year t-1"}\NormalTok{,}
+\DataTypeTok{ylab=}\StringTok{"Field Goal Percentage in Year t"}\NormalTok{)}
+\NormalTok{tt <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{60}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DataTypeTok{length=}\DecValTok{1001}\NormalTok{)}
+\NormalTok{slope.piece <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(fit}\FloatTok{.2}\NormalTok{)}\OperatorTok{$}\NormalTok{coef[}\DecValTok{20}\NormalTok{]}\OperatorTok{*}\NormalTok{tt}
+\KeywordTok{lines}\NormalTok{(tt,}\KeywordTok{summary}\NormalTok{(fit}\FloatTok{.2}\NormalTok{)}\OperatorTok{$}\NormalTok{coef[}\DecValTok{1}\NormalTok{]}\OperatorTok{+}\NormalTok{slope.piece,}\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\OperatorTok{:}\DecValTok{19}\NormalTok{)}
+\NormalTok{\{}\KeywordTok{lines}\NormalTok{(tt,}\KeywordTok{summary}\NormalTok{(fit}\FloatTok{.2}\NormalTok{)}\OperatorTok{$}\NormalTok{coef[}\DecValTok{1}\NormalTok{]}\OperatorTok{+}\KeywordTok{summary}\NormalTok{(fit}\FloatTok{.2}\NormalTok{)}\OperatorTok{$}\NormalTok{coef[i]}\OperatorTok{+}\NormalTok{slope.piece,}\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{detach}\NormalTok{(kicker)}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#\#Newspaper circulation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{circulation <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"~/OneDrive - University of Nevada, Reno/Teaching/STAT_757/Sheather_data/Data/circulation.txt"}\NormalTok{, }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"}\CharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+\KeywordTok{attach}\NormalTok{(circulation)}
+
+\CommentTok{#Figure 1.3 on page 5}
+\KeywordTok{plot}\NormalTok{(Weekday,Sunday,}\DataTypeTok{xlab=}\StringTok{"Weekday Circulation"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"Sunday Circulation"}\NormalTok{,}
+\DataTypeTok{pch=}\NormalTok{Tabloid.with.a.Serious.Competitor}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DataTypeTok{col=}\NormalTok{Tabloid.with.a.Serious.Competitor}\OperatorTok{+}\DecValTok{1}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\DecValTok{110000}\NormalTok{, }\DecValTok{1600000}\NormalTok{,}\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{,}\StringTok{"1"}\NormalTok{),}
+\DataTypeTok{pch=}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}\DataTypeTok{col=}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}\DataTypeTok{title=}\StringTok{"Tabloid dummy variable"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Figure 1.4 on page 5}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{log}\NormalTok{(Weekday),}\KeywordTok{log}\NormalTok{(Sunday),}\DataTypeTok{xlab=}\StringTok{"log(Weekday Circulation)"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"log(Sunday Circulation)"}\NormalTok{,}
+\DataTypeTok{pch=}\NormalTok{Tabloid.with.a.Serious.Competitor}\OperatorTok{+}\DecValTok{1}\NormalTok{,}
+\DataTypeTok{col=}\NormalTok{Tabloid.with.a.Serious.Competitor}\OperatorTok{+}\DecValTok{1}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\FloatTok{11.6}\NormalTok{, }\FloatTok{14.1}\NormalTok{,}\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{,}\StringTok{"1"}\NormalTok{),}\DataTypeTok{pch=}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}\DataTypeTok{col=}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}
+\DataTypeTok{title=}\StringTok{"Tabloid dummy variable"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-2-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{detach}\NormalTok{(circulation)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{menu-pricing-in-a-new-italian-restaurant-in-nyc}{%
+\subsubsection{Menu pricing in a new Italian restaurant in
+NYC}\label{menu-pricing-in-a-new-italian-restaurant-in-nyc}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nyc <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/OneDrive - University of Nevada, Reno/Teaching/STAT_757/Sheather_data/Data/nyc.csv"}\NormalTok{,}\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{attach}\NormalTok{(nyc)}
+
+\CommentTok{#Figure 1.5 on page 7}
+\KeywordTok{pairs}\NormalTok{(Price}\OperatorTok{~}\NormalTok{Food}\OperatorTok{+}\NormalTok{Decor}\OperatorTok{+}\NormalTok{Service,}\DataTypeTok{data=}\NormalTok{nyc,}\DataTypeTok{gap=}\FloatTok{0.4}\NormalTok{,}
+\DataTypeTok{cex.labels=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Figure 1.6 on page 10}
+\KeywordTok{boxplot}\NormalTok{(Price}\OperatorTok{~}\NormalTok{East,}\DataTypeTok{ylab=}\StringTok{"Price"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"East (1 = East of Fifth Avenue)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-3-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{detach}\NormalTok{(nyc)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{effect-of-wine-critics-ratings-on-prices-of-bourdeax-wines}{%
+\subsubsection{Effect of wine critics' ratings on prices of Bourdeax
+wines}\label{effect-of-wine-critics-ratings-on-prices-of-bourdeax-wines}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Bordeaux <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/OneDrive - University of Nevada, Reno/Teaching/STAT_757/Sheather_data/Data/Bordeaux.csv"}\NormalTok{, }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{attach}\NormalTok{(Bordeaux)}
+
+\CommentTok{#Figure 1.7 on page 10}
+\KeywordTok{pairs}\NormalTok{(Price}\OperatorTok{~}\NormalTok{ParkerPoints}\OperatorTok{+}\NormalTok{CoatesPoints,}\DataTypeTok{data=}\NormalTok{Bordeaux,}\DataTypeTok{gap=}\FloatTok{0.4}\NormalTok{,}\DataTypeTok{cex.labels=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Figure 1.8 on page 11}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\KeywordTok{boxplot}\NormalTok{(Price}\OperatorTok{~}\NormalTok{P95andAbove,}\DataTypeTok{ylab=}\StringTok{"Price"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"P95andAbove"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(Price}\OperatorTok{~}\NormalTok{FirstGrowth,}\DataTypeTok{ylab=}\StringTok{"Price"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"First Growth"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(Price}\OperatorTok{~}\NormalTok{CultWine,}\DataTypeTok{ylab=}\StringTok{"Price"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"Cult Wine"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(Price}\OperatorTok{~}\NormalTok{Pomerol,}\DataTypeTok{ylab=}\StringTok{"Price"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"Pomerol"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(Price}\OperatorTok{~}\NormalTok{VintageSuperstar,}\DataTypeTok{ylab=}\StringTok{"Price"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"Vintage Superstar"}\NormalTok{)}
+
+\CommentTok{#Figure 1.9 on page 12}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(}\KeywordTok{log}\NormalTok{(Price)}\OperatorTok{~}\KeywordTok{log}\NormalTok{(ParkerPoints)}\OperatorTok{+}\KeywordTok{log}\NormalTok{(CoatesPoints),}\DataTypeTok{data=}\NormalTok{Bordeaux,}\DataTypeTok{gap=}\FloatTok{0.4}\NormalTok{,}\DataTypeTok{cex.labels=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-4-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Figure 1.10 on page 13}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{log}\NormalTok{(Price)}\OperatorTok{~}\NormalTok{P95andAbove,}\DataTypeTok{ylab=}\StringTok{"log(Price)"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"P95andAbove"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{log}\NormalTok{(Price)}\OperatorTok{~}\NormalTok{FirstGrowth,}\DataTypeTok{ylab=}\StringTok{"log(Price)"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"First Growth"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{log}\NormalTok{(Price)}\OperatorTok{~}\NormalTok{CultWine,}\DataTypeTok{ylab=}\StringTok{"log(Price)"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"Cult Wine"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{log}\NormalTok{(Price)}\OperatorTok{~}\NormalTok{Pomerol,}\DataTypeTok{ylab=}\StringTok{"log(Price)"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"Pomerol"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{log}\NormalTok{(Price)}\OperatorTok{~}\NormalTok{VintageSuperstar,}\DataTypeTok{ylab=}\StringTok{"log(Price)"}\NormalTok{,}
+\DataTypeTok{xlab=}\StringTok{"Vintage Superstar"}\NormalTok{)}
+
+\KeywordTok{detach}\NormalTok{(Bordeaux)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+\hypertarget{generating-fake-data-30-points}{%
+\subsection{3. Generating fake data {[}30
+points{]}}\label{generating-fake-data-30-points}}
+
+\hypertarget{generate-100-random-variates-from-a-normal-distribution-with-mean-0-and-standard-deviation-of-100.-summarize-and-plot-the-data.-set-a-seed-to-make-it-reproducible.}{%
+\subsubsection{3.1 Generate 100 random variates from a normal
+distribution with mean 0 and standard deviation of 100. Summarize and
+plot the data. (Set a seed to make it
+reproducible).}\label{generate-100-random-variates-from-a-normal-distribution-with-mean-0-and-standard-deviation-of-100.-summarize-and-plot-the-data.-set-a-seed-to-make-it-reproducible.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{sample1<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(sample1,}\DataTypeTok{xlab=}\StringTok{"x"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"frequency"}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Random numbers-normal(0,100)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/3.1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(sample1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -227.193  -60.885   -5.942    0.291   65.589  258.196
+\end{verbatim}
+
+At 0.29, the sample mean is fairly close to the distribution mean of
+zero; the min/max values are inline with the standard deviation; and the
+shape of the histogram looks like the bell-shaped normal distribution.
+
+\hypertarget{generate-1000-random-variates-from-a-beta-distribution-with-the-parameters-alpha-and-beta-both-equal-to-2.-summarize-and-plot-the-data.-set-a-seed-to-make-it-reproducible.}{%
+\subsubsection{\texorpdfstring{3.2 Generate 1000 random variates from a
+beta distribution with the parameters \(\alpha\) and \(\beta\) both
+equal to 2. Summarize and plot the data. (Set a seed to make it
+reproducible).}{3.2 Generate 1000 random variates from a beta distribution with the parameters \textbackslash{}alpha and \textbackslash{}beta both equal to 2. Summarize and plot the data. (Set a seed to make it reproducible).}}\label{generate-1000-random-variates-from-a-beta-distribution-with-the-parameters-alpha-and-beta-both-equal-to-2.-summarize-and-plot-the-data.-set-a-seed-to-make-it-reproducible.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1000}\NormalTok{)}
+\NormalTok{sample2<-}\KeywordTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(sample2,}\DataTypeTok{xlab=}\StringTok{"x"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"frequency"}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Random numbers-beta(2,2)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/3.2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(sample2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0211  0.3285  0.5063  0.5003  0.6671  0.9789
+\end{verbatim}
+
+With equal parameter values, the distribution should look like a
+bell-shaped normal distribution but with a `fatter' bell. This is what
+the histogram looks like, though a little skewed to the right. More
+samples should smooth this out toward the center. Also, the x values are
+between 0 and 1, which is expected for the beta distribution.
+
+\hypertarget{generate-10000-random-variates-from-a-binomial-distribution-with-the-parameters-n10-and-p0.2.-summarize-and-plot-the-data.-set-a-seed-to-make-it-reproducible.}{%
+\subsubsection{\texorpdfstring{3.3 Generate 10000 random variates from a
+binomial distribution with the parameters \(n=10\) and \(p=0.2\).
+Summarize and plot the data. (Set a seed to make it
+reproducible).}{3.3 Generate 10000 random variates from a binomial distribution with the parameters n=10 and p=0.2. Summarize and plot the data. (Set a seed to make it reproducible).}}\label{generate-10000-random-variates-from-a-binomial-distribution-with-the-parameters-n10-and-p0.2.-summarize-and-plot-the-data.-set-a-seed-to-make-it-reproducible.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{10000}\NormalTok{)}
+\NormalTok{sample3<-}\KeywordTok{rbinom}\NormalTok{(}\DecValTok{10000}\NormalTok{,}\DecValTok{10}\NormalTok{,}\FloatTok{0.2}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(sample3,}\DataTypeTok{xlab=}\StringTok{"x"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"frequency"}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Random numbers-binomial(10,0.2)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STAT_757_Assignment1_solutions_files/figure-latex/3.3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(sample3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00    1.00    2.00    2.01    3.00    7.00
+\end{verbatim}
+
+The sample mean of 2.01 is very close to the expected n and p value - 10
+* 0.2 = 2, due to the high sample number (compared to the sample mean in
+3.1). And as expected, the distribution is skewed to the lower numbers
+(because of the 0.2 parameter) and then tails off sharply at the higher
+values.
+
+
+\end{document}

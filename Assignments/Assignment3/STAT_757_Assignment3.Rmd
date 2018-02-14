@@ -19,7 +19,7 @@ references:
     year: 2009
 ---
 
-## Instructions [30 points]
+## Instructions [20 points]
 
 Modify this file to provide responses to the Ch.3 Exercises in @sheather2009. You can find some helpful code here: [http://www.stat.
 tamu.edu/~sheather/book/docs/rcode/Chapter3NewMarch2011.R](http://www.stat.tamu.edu/~sheather/book/docs/rcode/Chapter3NewMarch2011.R). Also address the project milestones indicated below. Please email **both** your .Rmd (or roxygen .R) and one of the following either .HTML, .PDF, or .DOCX using the format SURNAME-FIRSTNAME-Assignment2.Rmd and SURNAME-FIRSTNAME-Assignment2.pdf.
@@ -28,9 +28,9 @@ tamu.edu/~sheather/book/docs/rcode/Chapter3NewMarch2011.R](http://www.stat.tamu.
 
 ## Exercise 3.4.4 [20 points]
 
-## Exercise 3.4.5 [10 points]
+## Exercise 3.4.5 [20 points]
 
-## Project milestones
+## Project milestones [20 points]
 
 1. Announce your project team of 1 to 3 members.
 2. Submit or describe the dataset you will analyze. 

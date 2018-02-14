@@ -1,0 +1,39 @@
+---
+title: "STAT 757 Assignment 7"
+subtitle: "DUE X/XX/2018 11:59PM"
+author: "AG Schissler"
+date: "2/14/2018"
+output: pdf_document
+fig_caption: true
+exclude: true
+caption: true
+references:
+- id: sheather2009
+  title: A modern approach to regression with R
+  author:
+  - family: Sheather
+    given: Simon
+  publisher: Springer Science \& Business Media
+  type: book
+  issued:
+    year: 2009
+---
+
+## Instructions [20 points]
+
+Modify this file to provide responses to the Ch.7 Exercises in @sheather2009. You can find some helpful code here: [http://www.stat.
+tamu.edu/~sheather/book/docs/rcode/Chapter7.R](http://www.stat.tamu.edu/~sheather/book/docs/rcode/Chapter7.R). Also address the project milestones indicated below. Please email **both** your .Rmd (or roxygen .R) and one of the following either .HTML, .PDF, or .DOCX using the format SURNAME-FIRSTNAME-Assignment7.Rmd and SURNAME-FIRSTNAME-Assignment7.pdf.
+
+## Exercise 7.5.3 [60 points] 
+
+## Project milestones [20 points]
+
+1. Conduct your data analysis plan.
+ * Apply your model to fake data and ensure a proper fit.
+ * Apply your model to real data.
+ * Decide whether model is valid for the real data.
+2. Refine your model as needed until you are satisfied with the fit.
+ * Don't make decisions based on $p$-values or other inferential devices!
+ * Only consider the fit and whether your model addresses your research hypothesis.
+
+## References

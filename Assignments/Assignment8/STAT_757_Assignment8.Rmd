@@ -1,0 +1,34 @@
+---
+title: "STAT 757 Assignment 8"
+subtitle: "DUE X/XX/2018 11:59PM"
+author: "AG Schissler"
+date: "2/14/2018"
+output: pdf_document
+fig_caption: true
+exclude: true
+caption: true
+references:
+- id: sheather2009
+  title: A modern approach to regression with R
+  author:
+  - family: Sheather
+    given: Simon
+  publisher: Springer Science \& Business Media
+  type: book
+  issued:
+    year: 2009
+---
+
+## Instructions [20 points]
+
+Modify this file to provide responses to the Ch.8 Exercises in @sheather2009. You can find some helpful code here: [http://www.stat.
+tamu.edu/~sheather/book/docs/rcode/Chapter8.R](http://www.stat.tamu.edu/~sheather/book/docs/rcode/Chapter8.R). Also address the project milestones indicated below. Please email **both** your .Rmd (or roxygen .R) and one of the following either .HTML, .PDF, or .DOCX using the format SURNAME-FIRSTNAME-Assignment8.Rmd and SURNAME-FIRSTNAME-Assignment8.pdf.
+
+## Exercise 8.3.4 [60 points] 
+
+## Project milestones [20 points]
+
+1. Finalize your analysis.
+2. Draft your methods section of the written report.
+
+## References

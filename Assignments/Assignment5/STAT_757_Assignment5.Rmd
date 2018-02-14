@@ -24,7 +24,7 @@ references:
 Modify this file to provide responses to the Ch.4 Exercises in @sheather2009. You can find some helpful code here: [http://www.stat.
 tamu.edu/~sheather/book/docs/rcode/Chapter5.R](http://www.stat.tamu.edu/~sheather/book/docs/rcode/Chapter5.R). Also address the project milestones indicated below. Please email **both** your .Rmd (or roxygen .R) and one of the following either .HTML, .PDF, or .DOCX using the format SURNAME-FIRSTNAME-Assignment2.Rmd and SURNAME-FIRSTNAME-Assignment2.pdf.
 
-## Choose either Exercise 5.4.2 or 5.4.3. Response to all parts posed. [60 points] 
+## Choose either Exercise 5.4.2 or 5.4.3. Respond to all parts posed. [60 points] 
 
 ## Project milestones [20 points]
 

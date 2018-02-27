@@ -1,6 +1,6 @@
 ---
 title: "STAT 757 Assignment 3"
-subtitle: "DUE X/XX/2018 11:59PM"
+subtitle: "DUE 3/04/2018 11:59PM"
 author: "AG Schissler"
 date: "2/14/2018"
 output: pdf_document
